@@ -21,8 +21,9 @@ const clientSchema = new Schema({
         type: String,
         required: true
     },
-    firstPurchase: new Date(),
-    totalPurchases: Number
-}) 
+    totalPurchases: Number // Buscar incrementar esta propiedad en cada actualización
+}, {
+    timestamps: true
+})
 
 module.exports = model('Clients', clientSchema);
