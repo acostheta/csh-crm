@@ -27,4 +27,27 @@ clientsCtrl.createClient = async (req, res) => {
     res.send(newClient);
 }
 
+// Delete Client
+
+clientsCtrl.deleteClient = async (req, res) => {
+    const message = `Client id:${req.params.id} deleted successfully`
+    await Client.findOneAndDelete(req.params.id)
+    res.json({"message": message});
+};
+
+clientsCtrl.editClient = async (req, res) => {
+    // Se toman los datos del req.body mediante destructuring
+    const {
+        firstName, lastName, nationality, documentNumber, phoneNumber, totalPurchases
+    } = req.body
+    
+    const updatedNote = {
+        firstName, lastName, nationality, documentNumber, phoneNumber, totalPurchases
+    }
+
+    // Se usa findByIdAndUpdate, usando req.params.id para señalar la entrada, y el objeto para entregar los datos nuevos.
+    await Client.findByIdAndUpdate(req.params.id, updatedNote);
+    res.send(updatedNote);
+}
+
 module.exports = clientsCtrl;

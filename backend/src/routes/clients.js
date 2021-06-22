@@ -1,6 +1,6 @@
 const {Router} = require('express'); // router es de express!!! i forgot it 
 const router = Router();
-const { getClients, createClient  } = require('../controllers/clients.controllers');
+const { getClients, createClient, deleteClient, editClient  } = require('../controllers/clients.controllers');
 
 
 /* API DE CLIENTS */
@@ -8,5 +8,9 @@ const { getClients, createClient  } = require('../controllers/clients.controller
 router.route('/')
     .get(getClients)
     .post(createClient)
+
+router.route('/:id')
+    .delete(deleteClient)
+    .put(editClient)
 
 module.exports = router;
