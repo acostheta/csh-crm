@@ -1,6 +1,7 @@
 const {Router} = require('express'); // router es de express!!! i forgot it 
-const app = require('../app');
 const router = Router();
+
+/* API DE CLIENTS */
 
 router.route('/')
     .get((req, res) => res.send('Tenemos un enrutador') );
